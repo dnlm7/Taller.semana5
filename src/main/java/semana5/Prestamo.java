@@ -1,19 +1,17 @@
 package semana5;
 
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 
 public class Prestamo {
     private Libro libro;
     private Usuario usuario;
-    private LocalDate fechaPrestamo;
-    private LocalDate fechaDevolucionPrevista;
+    private int diaPrestamo;
+    private int diaDevolucionPrevista;
 
-    public Prestamo(Libro libro, Usuario usuario, LocalDate fechaPrestamo, int diasPrestamo) {
+    public Prestamo(Libro libro, Usuario usuario, int diaPrestamo, int fechaMax) {
         this.libro = libro;
         this.usuario = usuario;
-        this.fechaPrestamo = fechaPrestamo;
-        this.fechaDevolucionPrevista = fechaPrestamo.plusDays(diasPrestamo);
+        this.diaPrestamo = diaPrestamo;
+        this.diaDevolucionPrevista = diaPrestamo + fechaMax;
     }
 
     public Libro getLibro() {
@@ -24,18 +22,17 @@ public class Prestamo {
         return usuario;
     }
 
-    public LocalDate getFechaPrestamo() {
-        return fechaPrestamo;
+    public int getFechaPrestamo() {
+        return diaPrestamo;
     }
 
-    public LocalDate getFechaDevolucionPrevista() {
-        return fechaDevolucionPrevista;
+    public int getFechaDevolucionPrevista() {
+        return diaDevolucionPrevista;
     }
 
     public long calcularRetraso() {
-        LocalDate hoy = LocalDate.now();
-        if (hoy.isAfter(fechaDevolucionPrevista)) {
-            return ChronoUnit.DAYS.between(fechaDevolucionPrevista, hoy);
+        if (Biblioteca.diaSimulado > diaDevolucionPrevista) {
+            return Biblioteca.diaSimulado - diaDevolucionPrevista;
         }
         return 0;
     }
@@ -45,8 +42,8 @@ public class Prestamo {
         return "Prestamo{" +
                 "libro=" + libro.getTitulo() +
                 ", usuario=" + usuario.getNombre() +
-                ", fechaPrestamo=" + fechaPrestamo +
-                ", fechaDevolucionPrevista=" + fechaDevolucionPrevista +
+                ", fechaPrestamo=" + diaPrestamo +
+                ", fechaDevolucionPrevista=" + diaDevolucionPrevista +
                 '}';
     }
 }
