@@ -6,15 +6,15 @@ public class Libro {
     private String Titulo; 
     private String Autor; 
     private String ISBN; 
-    private String Año_de_publicacion; 
+    private String añoDePublicacion; 
     private Boolean Disponible; 
 
     //Constructor 
-    public Libro(String Titulo, String Autor, String ISBN, String Año_de_publicacion, Boolean Disponible)  {
+    public Libro(String Titulo, String Autor, String ISBN, String añoDePublicacion, Boolean Disponible)  {
         this.Titulo = Titulo; 
         this.Autor = Autor; 
         this.ISBN = ISBN;
-        this.Año_de_publicacion = Año_de_publicacion;
+        this.añoDePublicacion = añoDePublicacion;
         this.Disponible = Disponible;
 
     }
@@ -41,11 +41,11 @@ public class Libro {
 public void setISBN(String ISBN) {
     this.ISBN = ISBN; 
 } 
-public String getAño_de_publicacion() {
-    return Año_de_publicacion; 
+public String getañoDePublicacion() {
+    return añoDePublicacion; 
 }
-public void setAño_de_publicacion(String Año_de_publicacion) {
-    this.Año_de_publicacion = Año_de_publicacion;  
+public void setAño_de_publicacion(String añoDePublicacion) {
+    this.añoDePublicacion = añoDePublicacion;  
 }  
 public Boolean getDisponible() {
     return Disponible; 
@@ -54,7 +54,18 @@ public void setDisponible(Boolean Disponible) {
     this.Disponible = Disponible; 
 } 
 
-//metodo para libro disponible 
+//metodo toString 
+
+@Override
+public String toString() {
+    return "Libro{" +
+            "Titulo='" + Titulo + '\'' +
+            ", Autor='" + Autor + '\'' +
+            ", ISBN='" + ISBN + '\'' +
+            ", añoDePublicacion='" + añoDePublicacion + '\'' +
+            ", Disponible=" + Disponible +
+            '}'; 
+}
 
 
 }
