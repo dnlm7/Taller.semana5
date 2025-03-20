@@ -1,16 +1,16 @@
 package semana5;
 
-import java.sql.Date;
+// import java.sql.Date;
 
 public class Libro {
     private String Titulo; 
     private String Autor; 
     private String ISBN; 
-    private Date Año_de_publicacion; 
+    private String Año_de_publicacion; 
     private Boolean Disponible; 
 
     //Constructor 
-    public Libro(String Titulo, String Autor, String ISBN, Date Año_de_publicacion, Boolean Disponible)  {
+    public Libro(String Titulo, String Autor, String ISBN, String Año_de_publicacion, Boolean Disponible)  {
         this.Titulo = Titulo; 
         this.Autor = Autor; 
         this.ISBN = ISBN;
@@ -41,10 +41,10 @@ public class Libro {
 public void setISBN(String ISBN) {
     this.ISBN = ISBN; 
 } 
-public Date getAño_de_publicacion() {
+public String getAño_de_publicacion() {
     return Año_de_publicacion; 
 }
-public void setAño_de_publicacion(Date Año_de_publicacion) {
+public void setAño_de_publicacion(String Año_de_publicacion) {
     this.Año_de_publicacion = Año_de_publicacion;  
 }  
 public Boolean getDisponible() {
