@@ -1,6 +1,5 @@
 package semana5;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +7,7 @@ public class Biblioteca {
     private List<Libro> libros;
     private List<Usuario> usuarios;
     private List<Prestamo> prestamos;
+    public static int diaSimulado = 1;
 
     public Biblioteca() {
         this.libros = new ArrayList<>();
@@ -15,16 +15,39 @@ public class Biblioteca {
         this.prestamos = new ArrayList<>();
     }
 
+    public void avanzarDias() {
+        diaSimulado++;
+    }
+
+    public void avanzarDias(int dias) {
+        diaSimulado += dias;
+    }
+
     // Getters
     public List<Libro> getLibros() {
         return libros;
     }
 
-    public Libro agregarLibro(int id, String titulo, String autor, String isbn, String anio, boolean disponible) {
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public List<Prestamo> getPrestamos() {
+        return prestamos; 
+    }
+
+    public Libro agregarLibro(String titulo, String autor, String isbn, String anio, boolean disponible) {
         Libro libro = new Libro(titulo, autor, isbn, anio, disponible);
         libros.add(libro);
         return libro;
     }
+
+    public Libro agregarLibro(String titulo, String autor) {
+        Libro libro = new Libro(titulo, "Desconocido", "Desconocido", "Desconocido", true);
+        libros.add(libro);
+        return libro;
+    }
+
 
     public Usuario agregarUsuario(String nombre, String email, String telefono, String direccion) {
         Usuario usuario = new Usuario(nombre, email, telefono, direccion);
@@ -36,7 +59,7 @@ public class Biblioteca {
     public Prestamo realizarPrestamo(Usuario usuario, Libro libro, int diasPrestamo) {
         if (libro.getDisponible()) {
             libro.setDisponible(false);
-            Prestamo nuevoPrestamo = new Prestamo(libro, usuario, LocalDate.now(), diasPrestamo);
+            Prestamo nuevoPrestamo = new Prestamo(libro, usuario, diaSimulado, diasPrestamo);
 
             // Agregar a la lista de prestamos
             prestamos.add(nuevoPrestamo);
@@ -79,11 +102,7 @@ public class Biblioteca {
         devolverLibro(prestamo.getUsuario(), prestamo.getLibro());
     }
 
-    public void consultarPrestamos() {
-        
-    }
-
-    public List<Prestamo> consultarPrestamosPorUsuario(Usuario usuario) {
+    public List<Prestamo> getPrestamosPorUsuario(Usuario usuario) {
         List<Prestamo> prestamosUsuario = new ArrayList<>();
         for (Prestamo prestamo : prestamos) {
             if (prestamo.getUsuario().equals(usuario)) {
@@ -93,6 +112,8 @@ public class Biblioteca {
 
         return prestamosUsuario;
     }
+
+    
 
     public List<Libro> buscarLibros(String busqueda) {
         List<Libro> librosEncontrados = new ArrayList<>();
@@ -123,6 +144,28 @@ public class Biblioteca {
             }
         }
         return librosEncontrados;
+    }
+
+    public void generarInforme() {
+        System.out.println("[Informe de la biblioteca]");
+        System.out.println("Día actual simulado: " + diaSimulado);
+        System.out.println("Libros (" + libros.size() + "):");
+        for (Libro libro : libros) {
+            System.out.println("* " + libro.getTitulo() + " - " + (libro.getDisponible() ? "Disponible" : "No disponible"));
+        }
+
+        System.out.println("\nUsuarios (" + usuarios.size() + "):");
+        for (Usuario usuario : usuarios) {
+            System.out.println("* " + usuario.getNombre() + " - " + usuario.getEmail());
+        }
+
+        System.out.println("\nPrestamos (" + prestamos.size() + "):");
+        for (Prestamo prestamo : prestamos) {
+            System.out.println("* " + prestamo.getUsuario().getNombre() + " - " + prestamo.getLibro().getTitulo() 
+                                    + " - Fecha de préstamo: Día #" + prestamo.getFechaPrestamo() 
+                                    + " - Fecha de devolución prevista: Día #" + prestamo.getFechaDevolucionPrevista()
+                                    + " " + (prestamo.calcularRetraso() > 0 ? "(RETRASO)" : ""));
+        }
     }
     
 }
