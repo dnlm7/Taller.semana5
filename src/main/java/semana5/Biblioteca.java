@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Biblioteca {
-    private List<Libro> libros;
-    private List<Usuario> usuarios;
-    private List<Prestamo> prestamos;
+    private  List<Libro> libros;
+    private  List<Usuario> usuarios;
+    private  List<Prestamo> prestamos;
     public static int diaSimulado = 1;
 
     public Biblioteca() {
@@ -139,7 +139,7 @@ public class Biblioteca {
     public List<Libro> buscarLibrosPorAnio(String anio) {
         List<Libro> librosEncontrados = new ArrayList<>();
         for (Libro libro : libros) {
-            if (libro.getAño_de_publicacion().equals(anio)) {
+            if (libro.getañoDePublicacion().equals(anio)) {
                 librosEncontrados.add(libro);
             }
         }
