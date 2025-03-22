@@ -1,12 +1,13 @@
-
-# INTEGRANTES DE LA ACTIVIDAD 
-### DANIEL MUÑOS 
-### MARTIN 
-### DIEGO CARDENAS 
-
 # Actividad Práctica: Implementación de Lógica de Negocio
 
-Este sistema de gestión de biblioteca permite administrar libros, usuarios y préstamos. Incluye funciones para agregar libros, registrar usuarios, realizar y devolver préstamos, además de listar los libros y usuarios registrados. 📚
+Este sistema de gestión de biblioteca permite administrar libros, usuarios y préstamos. Incluye funciones para agregar libros, registrar usuarios, realizar y devolver préstamos, además de listar los libros y usuarios registrados. 
+
+## Integrantes de la actividad 
+- Daniel Muñoz 
+- Martin Amaro 
+- Diego Cardenas
+
+<br>
 
 # Biblioteca - Sistema de Préstamos
 
@@ -47,8 +48,6 @@ Taller.semanas-master/
 | `Libro.java` | Representa un libro en la biblioteca. |
 | `Usuario.java` | Contiene la información de un usuario. |
 | `Prestamo.java` | Maneja los préstamos y sus fechas de devolución. |
-
-```
 
 ## 📜 Licencia
 Este proyecto está bajo la licencia MIT. Puedes usarlo, modificarlo y distribuirlo libremente
